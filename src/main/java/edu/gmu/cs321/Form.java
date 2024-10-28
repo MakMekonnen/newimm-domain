@@ -3,60 +3,69 @@ package edu.gmu.cs321;
 public class Form {
     private String form_id;
     private String aid;
+    private State state;
     private String name;
     private String dob;
-    private String status;
+    private Status status;
 
-    public Form(String form_id, String aid, String name, String dob, String status) {
+    public Form(String form_id, String aid, State state, String name, String dob, Status status) {
         this.form_id = form_id;
         this.aid = aid;
+        this.state = state;
         this.name = name;
         this.dob = dob;
-        this.status = status;
-    }
-
-    public String getForm_id() {
-        return form_id;
-    }
-
-    public void setForm_id(String form_id) {
-        this.form_id = form_id;
-    }
-
-    public String getAid() {
-        return aid;
-    }
-
-    public void setAid(String aid) {
-        this.aid = aid;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDob() {
-        return dob;
-    }
-
-    public void setDob(String dob) {
-        this.dob = dob;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
         this.status = status;
     }
 
     public void submit_form() {}
     public void validate_form() {}
     public void show_form() {}
-    public String get_status() {return "";}
+
+    public String get_form_id() {
+        return form_id;
+    }
+
+    public void set_form_id(String form_id) {
+        this.form_id = form_id;
+    }
+
+    public String get_aid() {
+        return aid;
+    }
+
+    public void set_aid(String aid) {
+        this.aid = aid;
+    }
+
+    public State get_state() {
+        return state;
+    }
+
+    public void set_state(State aid) {
+        this.state = state;
+    }
+
+    public String get_name() {
+        return name;
+    }
+
+    public void set_name(String name) {
+        this.name = name;
+    }
+
+    public String get_dob() {
+        return dob;
+    }
+
+    public void set_dob(String dob) {
+        this.dob = dob;
+    }
+
+    public Status get_status() {
+        return status;
+    }
+
+    public void set_status(Status status) {
+        this.status = status;
+    }
 }
