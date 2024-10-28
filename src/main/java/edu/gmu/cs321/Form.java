@@ -1,5 +1,7 @@
 package edu.gmu.cs321;
 
+import static edu.gmu.cs321.State.*;
+
 public class Form {
     private String form_id;
     private String aid;
@@ -8,13 +10,13 @@ public class Form {
     private String dob;
     private Status status;
 
-    public Form(String form_id, String aid, State state, String name, String dob, Status status) {
+    public Form(String form_id, String aid, String name, String dob, Status status) {
         this.form_id = form_id;
         this.aid = aid;
-        this.state = state;
         this.name = name;
         this.dob = dob;
         this.status = status;
+        this.state = DATA_ENTRY_STATE;
     }
 
     public void submit_form() {}
