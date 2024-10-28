@@ -1,0 +1,3 @@
+- tests for validation class
+- connect logic with data_entry object with submissions
+- create tests for submit
