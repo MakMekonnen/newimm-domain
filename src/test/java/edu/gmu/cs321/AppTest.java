@@ -2,7 +2,7 @@ package edu.gmu.cs321;
 
 import static edu.gmu.cs321.State.*;
 import static edu.gmu.cs321.Status.*;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -15,6 +15,9 @@ public class AppTest
     Form form1 = new Form("5", "11", "gob", "10/28/1999", LAWFUL);
     Form form2 = new Form("6", "24", "berry", "03/26/2002", ASYLUM);
     Form form3 = new Form("7", "15", "sarah", "05/14/2006", CITIZEN);
+
+    // bad form
+    Form form4 = new Form("7", "15", "34324", "0d/14/2006", CITIZEN);
 
     Workflow wf = new Workflow("1", 5);
 
@@ -74,4 +77,11 @@ public class AppTest
         assertEquals("6", wf.search_form("6").get_form_id());
     }
 
+    // Fix Validator Class
+    @Test
+    public void check_validate_form() {
+        Validation v = new Validation();
+        assertTrue(v.validate_form(form1));
+        assertFalse(v.validate_form(form4));
+    }
 }
