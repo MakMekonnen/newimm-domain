@@ -22,5 +22,5 @@ public class Employee {
         this.name = name;
     }
 
-    public void submit() {}
+    public void submit(Form form1) {}
 }

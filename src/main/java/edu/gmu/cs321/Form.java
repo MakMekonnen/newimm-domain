@@ -43,7 +43,7 @@ public class Form {
         return state;
     }
 
-    public void set_state(State aid) {
+    public void set_state(State state) {
         this.state = state;
     }
 

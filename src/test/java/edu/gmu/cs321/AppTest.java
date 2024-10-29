@@ -27,23 +27,35 @@ public class AppTest
 
     @Test
     public void check_name() {
-        assertEquals("1", data_entry.get_name());
-        assertEquals("2", reviewer.get_name());
-        assertEquals("3", approver.get_name());
+        assertEquals("bob", data_entry.get_name());
+        assertEquals("steve", reviewer.get_name());
+        assertEquals("cuk", approver.get_name());
     }
 
-//    @Test
-//    public void check_state_enum() {
-//        assertEquals(DATA_ENTRY_STATE, form1.get_state());
-//        assertEquals(REVIEWER_STATE, form2.get_state());
-//        assertEquals(APPROVER_STATE, form3.get_state());
-//    }
+    @Test
+    public void check_imm_name() {
+        assertEquals("gob", form1.get_name());
+        assertEquals("berry", form2.get_name());
+        assertEquals("sarah", form3.get_name());
+    }
 
     @Test
     public void check_status_enum() {
         assertEquals(LAWFUL, form1.get_status());
         assertEquals(ASYLUM, form2.get_status());
         assertEquals(CITIZEN, form3.get_status());
+    }
+
+    @Test
+    public void pass_through_form() {
+        wf.add_form(form1);
+        assertEquals(DATA_ENTRY_STATE, form1.get_state());
+        data_entry.submit(form1);
+        assertEquals(REVIEWER_STATE, form1.get_state());
+        reviewer.submit(form1);
+        assertEquals(APPROVER_STATE, form1.get_state());
+        approver.submit(form1);
+        assertEquals(COMPLETE_STATE, form1.get_state());
     }
 
     @Test
@@ -62,23 +74,4 @@ public class AppTest
         assertEquals("6", wf.search_form("6").get_form_id());
     }
 
-    @Test
-    public void change_state() {
-
-    }
-
-    @Test
-    public void check_validation_data_entry() {
-
-    }
-
-    @Test
-    public void check_validation_reviewer() {
-
-    }
-
-    @Test
-    public void check_validation_approver() {
-
-    }
 }
