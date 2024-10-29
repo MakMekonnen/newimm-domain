@@ -1,22 +1,22 @@
 package edu.gmu.cs321;
 
 public class Validation {
-    private bool only_letters(String str){
+    private boolean only_letters(String str){
         for(int i=0; i < str.length(); i++){
-            char c = str.charAt(i)
-            if(c >='A' && c <= 'Z'){
+            char c = str.charAt(i);
+            if (c >='A' && c <= 'Z'){
                 continue;
-            }else if (c >= 'a' && c <= 'z'){
+            } else if (c >= 'a' && c <= 'z'){
                 continue;
-            }else{
+            } else{
                 return false;
             }
         }
         return true;
     }
-    private bool only_digits(String str){
+    private boolean only_digits(String str){
         for (int i=0; i < str.length(); i++){
-            c = str.charAt(i);
+            char c = str.charAt(i);
             if(c < '0' || c > '9'){
                 return false;
             }
@@ -25,7 +25,7 @@ public class Validation {
     }
     public boolean validate_data_entry(Form form) {
         //Checking if any fields are null
-        String name = form.get_name(), dob = form.getdob(); //used for further testing
+        String name = form.get_name(), dob = form.get_dob(); //used for further testing
         if(form.get_form_id() == null){
             return false;
         }
@@ -60,13 +60,11 @@ public class Validation {
         }
         //checking fields of a date
         int month = Integer.parseInt(name.substring(0, 2), 10), day = Integer.parseInt(name.substring(3, 5), 10);
-        if(month < 1 || month > 12){
+
+        if (month < 1 || month > 12){
             return false;
         }
-        if(day < 1 || day > 31){
-            return false;   //probably need to check the month in order to get the max days
-        }
-        return true;
+        return day >= 1 && day <= 31;   //probably need to check the month in order to get the max days
     }
     public boolean validate_reviewer(Form form) {
         return false;
