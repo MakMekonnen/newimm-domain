@@ -1,6 +1,19 @@
 package edu.gmu.cs321;
 
 public class Validation {
+    private bool only_letters(String str){
+        for(int i=0; i < str.length(); i++){
+            char c = str.charAt(i)
+            if(c >='A' && c <= 'Z'){
+                continue;
+            }else if (c >= 'a' && c <= 'z'){
+                continue;
+            }else{
+                return false;
+            }
+        }
+        return true;
+    }
     private bool only_digits(String str){
         for (int i=0; i < str.length(); i++){
             c = str.charAt(i);
@@ -31,36 +44,27 @@ public class Validation {
         if(form.get_state() == null){
             return false;
         }
-        //Checking if the name field has any characters NOT in the alphabet
-        for(int i=0; i < name.length(); i++){
-            char c = name.charAt(i)
-            if(c >='A' && c <= 'Z'){
-                continue;
-            }else if (c >= 'a' && c <= 'z'){
-                continue;
-            }else{
-                return false;
-            }
+        if(!only_letters(name)){
+            return false;
         }
         //Checking if DOB is in correct format
         if(dob.length() != 10){
             return false;
         }
-        if(dob.replace("/","").length() != 8){
+        String no_dividers = dob.replace("/", "");
+        if(no_dividers.length() != 8){
             return false;
         }
-        String month, day, year;
-        month = name.substring(0, 2);
-        day = name.substring(3, 5);
-        year = name.substring(7);
-        if(!only_digits(month)){
+        if(!only_digits(no_dividers)){
             return false;
         }
-        if(!only_digits(day)){
+        //checking fields of a date
+        int month = Integer.parseInt(name.substring(0, 2), 10), day = Integer.parseInt(name.substring(3, 5), 10);
+        if(month < 1 || month > 12){
             return false;
         }
-        if(!only_digits(year)){
-            return false;
+        if(day < 1 || day > 31){
+            return false;   //probably need to check the month in order to get the max days
         }
         return true;
     }
